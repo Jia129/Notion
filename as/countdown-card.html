@@ -1,0 +1,132 @@
+<!--
+ * @Author: Tina Huang
+ * @Date: 2024-09-25 12:03:47
+ * @LastEditors: Tina Huang
+ * @LastEditTime: 2024-11-25 10:08:46
+ * @Description: 
+-->
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8" />
+  <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Days card</title>
+  <style>
+    html, body, h1, h3 {
+      margin: 0;
+      padding: 0;
+    }
+
+    @font-face {
+      font-family: "Klee-One";
+      src: url("../fonts/荆南波波黑-Bold.ttf");
+    }
+
+    .container {
+      font-family: "Klee-One";
+      width: 80vw;
+      height: 55vw;
+      margin: 0 auto;
+      border-radius: 20px;
+      box-sizing: border-box;
+      padding: 5vw;
+      color: #e6a4b4;
+      font-size: 5vw;
+      position: relative;
+    }
+
+    .inner {
+      height: 100%;
+      display: flex;
+      flex-direction: column;
+      justify-content: space-between;
+    }
+
+    .space {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      font-size: 5vw;
+      line-height: 1;
+    }
+
+    .days-box {
+      font-weight: 500;
+      text-align: center;
+      display: flex;
+      justify-content: center;
+      align-items: flex-end;
+    }
+
+    h1 {
+      font-size: 20vw;
+      display: inline-block;
+      line-height: 1;
+    }
+
+    #days_label {
+      padding-bottom: 2vh;
+    }
+
+    .event-box {
+      text-align: center;
+      font-weight: bold;
+      font-size: 8vw;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+    }
+
+    h3 {
+      line-height: 1;
+    }
+  </style>
+</head>
+
+<body>
+  <div class="container" id="container">
+    <div class="inner">
+      <div class="event-box">
+        <h3 id="name">We are together for</h3>
+      </div>
+      <div class="days-box">
+        <h1 id="days">6</h1><span id="days_label">Days</span>
+      </div>
+      <div class="space">
+        <span id="date">2024-12-19</span>
+        <p id="nicknames" style="margin: 0;">Vivi & Dao</p>
+      </div>
+    </div>
+  </div>
+  
+  <script>
+    window.onload = function () {
+      // 假设纪念日是 2024年12月19日
+      let target_date = new Date("2024-12-19T00:00:00");
+
+      // 获取当前时间
+      let _now = new Date();
+      _now.setHours(0);
+      _now.setMinutes(0);
+      _now.setSeconds(0);
+      _now.setMilliseconds(0);
+
+      // 计算当前时间与目标日期之间的差距（以毫秒为单位）
+      let passed = _now.getTime() - target_date.getTime();
+      
+      // 计算天数
+      let days = parseInt(passed / (24 * 60 * 60 * 1000)); // 获取天数
+
+      // 将计算的天数更新到页面
+      document.getElementById("days").innerText = days;
+      document.getElementById("days_label").innerText = "Days";
+
+      // 更新纪念日日期
+      document.getElementById("date").innerText = "2024-12-19"; // 显示纪念日
+    };
+  </script>
+</body>
+
+</html>
